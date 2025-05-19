@@ -38,6 +38,17 @@
       font-size: 14px;
     }
 
+    .form-group input:focus {
+      border-color: #1abc9c;
+      box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.2); /* hiệu ứng nhẹ bên ngoài */
+      outline: none;
+    } 
+
+    .form-group.invalid input {
+      border-color: red;
+      background-color: #fff5f5;
+    } 
+
     .form-message {
       font-size: 13px;
       color: red;
@@ -92,7 +103,19 @@
   <button type="submit" class="form-submit">Đăng ký</button>
 </form>
 
-<script src="/validation.js"></script>
+<script src="./validation.js"></script>
+<script>
+  Validator({
+    form: '#register-form',
+    errorSelector: '.form-message',
+    rule: [
+      Validator.isName('#fullname'),
+      Validator.isEmail('#email'),
+      Validator.isPassword('#password'),
+      Validator.isPassword('#confirm-password')
 
+    ]
+  })
+</script>
 </body>
 </html>
